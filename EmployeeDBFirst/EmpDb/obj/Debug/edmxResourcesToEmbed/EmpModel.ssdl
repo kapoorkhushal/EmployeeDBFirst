@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EmployeeDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="EmployeeDBModelStoreContainer">
+    <EntitySet Name="Department" EntityType="EmployeeDBModel.Store.Department" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Employee" EntityType="EmployeeDBModel.Store.Employee" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="EmployeeProjectMapping" EntityType="EmployeeDBModel.Store.EmployeeProjectMapping" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Project" EntityType="EmployeeDBModel.Store.Project" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Employee_Department" Association="EmployeeDBModel.Store.FK_Employee_Department">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeProjectMapping_Employee" Association="EmployeeDBModel.Store.FK_EmployeeProjectMapping_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="EmployeeProjectMapping" EntitySet="EmployeeProjectMapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeProjectMapping_Project" Association="EmployeeDBModel.Store.FK_EmployeeProjectMapping_Project">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="EmployeeProjectMapping" EntitySet="EmployeeProjectMapping" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="Description" Type="varchar" Nullable="true" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="DOB" Type="datetime" Nullable="false" />
+    <Property Name="DOJ" Type="datetime" Nullable="false" />
+    <Property Name="Address" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="DepartmentID" Type="int" Nullable="true" />
+    <Property Name="IsActive" Type="varchar" Nullable="true" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="EmployeeProjectMapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="true" />
+    <Property Name="ProjectId" Type="int" Nullable="true" />
+    <Property Name="IsActive" Type="varchar" Nullable="true" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="AccountName" Type="varchar" Nullable="false" MaxLength="100" />
+  </EntityType>
+  <Association Name="FK_Employee_Department">
+    <End Role="Department" Type="EmployeeDBModel.Store.Department" Multiplicity="0..1" />
+    <End Role="Employee" Type="EmployeeDBModel.Store.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="DepartmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeProjectMapping_Employee">
+    <End Role="Employee" Type="EmployeeDBModel.Store.Employee" Multiplicity="0..1" />
+    <End Role="EmployeeProjectMapping" Type="EmployeeDBModel.Store.EmployeeProjectMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeProjectMapping">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeProjectMapping_Project">
+    <End Role="Project" Type="EmployeeDBModel.Store.Project" Multiplicity="0..1" />
+    <End Role="EmployeeProjectMapping" Type="EmployeeDBModel.Store.EmployeeProjectMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeProjectMapping">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

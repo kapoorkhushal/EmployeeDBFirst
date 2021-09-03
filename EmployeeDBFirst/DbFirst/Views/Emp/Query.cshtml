@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "Query";
+}
+
+<h2>Index</h2>
+<table>
+    <tr>
+        <td>
+            @Html.ActionLink("Employees whose DOJ (Date of Joining) is greater than 1 Jan 2019", "EmployeeDOJ")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.ActionLink("Employees having Department HR", "EmployeeHR")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.ActionLink("Employees from “ABC” Project", "EmployeeAccordingProject")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.ActionLink("Department names having employees in Project “ABC", "DepartmentAccordingProject")
+        </td>
+    </tr>
+</table>
+

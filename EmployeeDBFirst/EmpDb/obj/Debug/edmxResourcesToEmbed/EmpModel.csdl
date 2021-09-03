@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="EmployeeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_Employee_Department" FromRole="Department" ToRole="Employee" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DOB" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DOJ" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DepartmentID" Type="Int32" />
+    <Property Name="IsActive" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="true" />
+    <NavigationProperty Name="Department" Relationship="Self.FK_Employee_Department" FromRole="Employee" ToRole="Department" />
+    <NavigationProperty Name="EmployeeProjectMapping" Relationship="Self.FK_EmployeeProjectMapping_Employee" FromRole="Employee" ToRole="EmployeeProjectMapping" />
+  </EntityType>
+  <EntityType Name="EmployeeProjectMapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeId" Type="Int32" />
+    <Property Name="ProjectId" Type="Int32" />
+    <Property Name="IsActive" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="true" />
+    <NavigationProperty Name="Employee" Relationship="Self.FK_EmployeeProjectMapping_Employee" FromRole="EmployeeProjectMapping" ToRole="Employee" />
+    <NavigationProperty Name="Project" Relationship="Self.FK_EmployeeProjectMapping_Project" FromRole="EmployeeProjectMapping" ToRole="Project" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AccountName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="EmployeeProjectMapping" Relationship="Self.FK_EmployeeProjectMapping_Project" FromRole="Project" ToRole="EmployeeProjectMapping" />
+  </EntityType>
+  <Association Name="FK_Employee_Department">
+    <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Employee">
+        <PropertyRef Name="DepartmentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeProjectMapping_Employee">
+    <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+    <End Role="EmployeeProjectMapping" Type="Self.EmployeeProjectMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeProjectMapping">
+        <PropertyRef Name="EmployeeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EmployeeProjectMapping_Project">
+    <End Role="Project" Type="Self.Project" Multiplicity="0..1" />
+    <End Role="EmployeeProjectMapping" Type="Self.EmployeeProjectMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Project">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="EmployeeProjectMapping">
+        <PropertyRef Name="ProjectId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="EmployeeDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Department" EntityType="Self.Department" />
+    <EntitySet Name="Employee" EntityType="Self.Employee" />
+    <EntitySet Name="EmployeeProjectMapping" EntityType="Self.EmployeeProjectMapping" />
+    <EntitySet Name="Project" EntityType="Self.Project" />
+    <AssociationSet Name="FK_Employee_Department" Association="Self.FK_Employee_Department">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Employee" EntitySet="Employee" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeProjectMapping_Employee" Association="Self.FK_EmployeeProjectMapping_Employee">
+      <End Role="Employee" EntitySet="Employee" />
+      <End Role="EmployeeProjectMapping" EntitySet="EmployeeProjectMapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EmployeeProjectMapping_Project" Association="Self.FK_EmployeeProjectMapping_Project">
+      <End Role="Project" EntitySet="Project" />
+      <End Role="EmployeeProjectMapping" EntitySet="EmployeeProjectMapping" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

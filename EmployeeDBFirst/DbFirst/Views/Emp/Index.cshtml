@@ -1,0 +1,24 @@
+﻿@model EmpModels.EmployeeProjectMappingModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<table>
+    <tr>
+        <td>
+            @Html.ActionLink("Employee Details", "EmployeeIndex")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.ActionLink("Project Details", "ProjectIndex")
+        </td>
+    </tr>
+    <tr>
+        <td>
+            @Html.ActionLink("Department Details", "DepartmentIndex")
+        </td>
+    </tr>
+</table>

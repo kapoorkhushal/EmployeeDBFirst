@@ -1,0 +1,14 @@
+C:\Users\khushalkapoor\source\repos\EmployeeDBFirst\EmpDb\bin\Debug\EmpDb.dll
+C:\Users\khushalkapoor\source\repos\EmployeeDBFirst\EmpDb\bin\Debug\EmpDb.pdb
+C:\Users\khushalkapoor\source\repos\EmployeeDBFirst\EmpDb\obj\Debug\EmpDb.csprojAssemblyReference.cache
+C:\Users\khushalkapoor\source\repos\EmployeeDBFirst\EmpDb\obj\Debug\EmpDb.csproj.CoreCompileInputs.cache
+C:\Users\khushalkapoor\source\repos\EmployeeDBFirst\EmpDb\obj\Debug\EmpDb.dll
+C:\Users\khushalkapoor\source\repos\EmployeeDBFirst\EmpDb\obj\Debug\EmpDb.pdb
+C:\Users\khushalkapoor\source\repos\EmployeeDBFirst\EmpDb\bin\Debug\EmpDb.dll.config
+C:\Users\khushalkapoor\source\repos\EmployeeDBFirst\EmpDb\bin\Debug\EmpModels.dll
+C:\Users\khushalkapoor\source\repos\EmployeeDBFirst\EmpDb\bin\Debug\EntityFramework.dll
+C:\Users\khushalkapoor\source\repos\EmployeeDBFirst\EmpDb\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\khushalkapoor\source\repos\EmployeeDBFirst\EmpDb\bin\Debug\EmpModels.pdb
+C:\Users\khushalkapoor\source\repos\EmployeeDBFirst\EmpDb\bin\Debug\EntityFramework.xml
+C:\Users\khushalkapoor\source\repos\EmployeeDBFirst\EmpDb\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\khushalkapoor\source\repos\EmployeeDBFirst\EmpDb\obj\Debug\EmpDb.csproj.CopyComplete

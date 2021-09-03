@@ -1,0 +1,6 @@
+C:\Users\khushalkapoor\source\repos\EmployeeDBFirst\EmpModels\bin\Debug\EmpModels.dll
+C:\Users\khushalkapoor\source\repos\EmployeeDBFirst\EmpModels\bin\Debug\EmpModels.pdb
+C:\Users\khushalkapoor\source\repos\EmployeeDBFirst\EmpModels\obj\Debug\EmpModels.csprojAssemblyReference.cache
+C:\Users\khushalkapoor\source\repos\EmployeeDBFirst\EmpModels\obj\Debug\EmpModels.csproj.CoreCompileInputs.cache
+C:\Users\khushalkapoor\source\repos\EmployeeDBFirst\EmpModels\obj\Debug\EmpModels.dll
+C:\Users\khushalkapoor\source\repos\EmployeeDBFirst\EmpModels\obj\Debug\EmpModels.pdb
